@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './Home.module.css';
 import Hero from '../Hero/Hero';
+
 import InfoBox from '../InfoBox/InfoBox';
 import { PiFingerprintSimpleBold } from "react-icons/pi";
 import { FaCode } from "react-icons/fa6";
@@ -29,6 +30,7 @@ export const Home = () => {
         />
       </div>
       {/* Other content of the Home component */}
+  
     </div>
   );
 };
