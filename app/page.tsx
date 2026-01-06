@@ -77,7 +77,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section
-        className="relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center px-6 py-20"
+        className="relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
         onMouseMove={handleHeroMove}
         onMouseLeave={handleHeroLeave}
       >
@@ -100,21 +100,39 @@ export default function Home() {
           }}
         />
 
-        <div className="max-w-4xl text-center">
+        <div className="w-full text-center">
           {/* Logo Large (wrapper so overlay can align exactly) */}
-          <div ref={logoWrapRef} className="mb-12 flex justify-center z-10 relative" style={{ width: 120, height: 120 }}>
+          <div
+            ref={logoWrapRef}
+            className="mb-12 flex justify-center z-10 relative"
+            // allow the wrapper to be full width so the SVG can responsively scale
+            style={{ width: "100%", height: 240 }}
+          >
+            {/* Base (black) text SVG from Asset 2Logo.svg */}
             <svg
-              id="iD-hero"
-              width="120"
-              height="120"
-              className="text-black z-10"
+              id="hero-text-base"
+              className="text-black z-10 mx-auto block max-w-none"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 841.89 841.89"
+              viewBox="0 0 1400 240"
+              preserveAspectRatio="xMidYMid meet"
+              style={{ width: "min(1400px, 90vw)", height: "auto" }}
             >
-              <path d="M651.1,269.3c-24.79-44.07-60.2-78.36-106.19-102.88-46.01-24.51-99.58-36.78-160.73-36.78h-68.59v140.49h56.2c47.37,0,84.56,13.09,111.56,39.25,26.99,26.17,40.49,63.22,40.49,111.15s-13.51,84.02-40.49,109.91c-27,25.9-64.19,38.84-111.56,38.84h-56.2v-299.15h-161.97v442.12h230.56c60.6,0,113.9-12.52,159.91-37.6,45.99-25.06,81.53-59.63,106.6-103.71,25.06-44.07,37.6-94.21,37.6-150.4s-12.4-107.15-37.19-151.23Z" fill="currentColor" />
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontFamily="Poppins-Bold, Poppins"
+                fontSize="160"
+                fontWeight={700}
+                letterSpacing="-.02em"
+                fill="currentColor"
+              >
+                iridesceDigital
+              </text>
             </svg>
 
-            {/* white overlay svg, masked by circle position relative to this wrapper */}
+            {/* white overlay text, masked by circle position relative to this wrapper */}
             <div
               aria-hidden
               className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
@@ -124,14 +142,29 @@ export default function Home() {
               }}
             >
               <svg
-                width="120"
-                height="120"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 841.89 841.89"
-                className="text-white"
-                style={{ color: "#fff" }}
+                viewBox="0 0 1400 240"
+                preserveAspectRatio="xMidYMid meet"
+                className="text-white mx-auto block max-w-none"
+                style={{ color: "#fff", width: "min(1400px, 90vw)", height: "auto" }}
               >
-                <path d="M651.1,269.3c-24.79-44.07-60.2-78.36-106.19-102.88-46.01-24.51-99.58-36.78-160.73-36.78h-68.59v140.49h56.2c47.37,0,84.56,13.09,111.56,39.25,26.99,26.17,40.49,63.22,40.49,111.15s-13.51,84.02-40.49,109.91c-27,25.9-64.19,38.84-111.56,38.84h-56.2v-299.15h-161.97v442.12h230.56c60.6,0,113.9-12.52,159.91-37.6,45.99-25.06,81.53-59.63,106.6-103.71,25.06-44.07,37.6-94.21,37.6-150.4s-12.4-107.15-37.19-151.23Z" fill="currentColor" stroke="#fff" strokeWidth="1" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontFamily="Poppins-Bold, Poppins"
+                  fontSize="160"
+                  fontWeight={700}
+                  letterSpacing="-.02em"
+                  fill="currentColor"
+                  stroke="#fff"
+                  strokeWidth={3}
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                >
+                  iridesceDigital
+                </text>
               </svg>
             </div>
           </div>
