@@ -94,7 +94,7 @@ export default function Home() {
             background: "#B6FF00",
             borderRadius: "50%",
             pointerEvents: "none",
-            transition: "left 120ms linear, top 120ms linear, transform 120ms linear",
+            transition: "none",
             mixBlendMode: "normal",
             zIndex: 0,
           }}
@@ -131,7 +131,7 @@ export default function Home() {
                 className="text-white"
                 style={{ color: "#fff" }}
               >
-                <path d="M651.1,269.3c-24.79-44.07-60.2-78.36-106.19-102.88-46.01-24.51-99.58-36.78-160.73-36.78h-68.59v140.49h56.2c47.37,0,84.56,13.09,111.56,39.25,26.99,26.17,40.49,63.22,40.49,111.15s-13.51,84.02-40.49,109.91c-27,25.9-64.19,38.84-111.56,38.84h-56.2v-299.15h-161.97v442.12h230.56c60.6,0,113.9-12.52,159.91-37.6,45.99-25.06,81.53-59.63,106.6-103.71,25.06-44.07,37.6-94.21,37.6-150.4s-12.4-107.15-37.19-151.23Z" fill="currentColor" />
+                <path d="M651.1,269.3c-24.79-44.07-60.2-78.36-106.19-102.88-46.01-24.51-99.58-36.78-160.73-36.78h-68.59v140.49h56.2c47.37,0,84.56,13.09,111.56,39.25,26.99,26.17,40.49,63.22,40.49,111.15s-13.51,84.02-40.49,109.91c-27,25.9-64.19,38.84-111.56,38.84h-56.2v-299.15h-161.97v442.12h230.56c60.6,0,113.9-12.52,159.91-37.6,45.99-25.06,81.53-59.63,106.6-103.71,25.06-44.07,37.6-94.21,37.6-150.4s-12.4-107.15-37.19-151.23Z" fill="currentColor" stroke="#fff" strokeWidth="1" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
               </svg>
             </div>
           </div>
@@ -147,7 +147,9 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="flex flex-col gap-6 items-start">
           <div>
-            <h2 className="font-poppins font-700 text-3xl sm:text-4xl leading-tight text-black">
+            <h2 
+              className="font-poppins font-700 text-3xl sm:text-4xl leading-tight text-black transition-all duration-300 hover:blur-sm"
+            >
               iridesceDigital blurs the boundries between creative formats
             </h2>
           </div>

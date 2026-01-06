@@ -14,6 +14,23 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Ensure consistent base font scaling across high-resolution monitors */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px; /* fixed base to reduce variations across displays */
+}
+
+/* Scale the site up on large/high-res displays to emulate 133% zoom (e.g., 1440p) */
+@media (min-width: 1400px) {
+  .site-root {
+    transform-origin: top left;
+    transform: scale(1.33);
+    width: calc(100% / 1.33);
+  }
+}
+
 /* A11y */
 .sr-only {
   position: absolute;
@@ -49,6 +66,14 @@ body {
     @apply px-6 lg:px-20 3xl:px-0;
   }
 
+  /* Make numeric font utility classes bolder by one step */
+  .font-300 { font-weight: 500; }
+  .font-400 { font-weight: 500; }
+  .font-500 { font-weight: 600; }
+  .font-600 { font-weight: 700; }
+  .font-700 { font-weight: 800; }
+  .font-800 { font-weight: 900; }
+
   .flexCenter {
     @apply flex items-center justify-center;
   }
@@ -67,71 +92,71 @@ body {
 
   /* FONTS */
   .regular-64 {
-    @apply text-[64px] font-[400] leading-[120%];
+    @apply text-[64px] font-[500] leading-[120%];
   }
 
   .regular-40 {
-    @apply text-[40px] font-[400] leading-[120%];
+    @apply text-[40px] font-[500] leading-[120%];
   }
 
   .regular-32 {
-    @apply text-[32px] font-[400];
+    @apply text-[32px] font-[500];
   }
 
   .regular-24 {
-    @apply text-[24px] font-[400];
+    @apply text-[24px] font-[500];
   }
 
   .regular-20 {
-    @apply text-[20px] font-[400];
+    @apply text-[20px] font-[500];
   }
 
   .regular-18 {
-    @apply text-[18px] font-[400];
+    @apply text-[18px] font-[500];
   }
 
   .regular-16 {
-    @apply text-[16px] font-[400];
+    @apply text-[16px] font-[500];
   }
 
   .regular-14 {
-    @apply text-[14px] font-[400];
+    @apply text-[14px] font-[500];
   }
 
   .medium-14 {
-    @apply text-[14px] font-[600];
+    @apply text-[14px] font-[700];
   }
 
   .bold-88 {
-    @apply text-[88px] font-[700] leading-[120%];
+    @apply text-[88px] font-[800] leading-[120%];
   }
 
   .bold-64 {
-    @apply text-[64px] font-[700] leading-[120%];
+    @apply text-[64px] font-[800] leading-[120%];
   }
 
   .bold-52 {
-    @apply text-[52px] font-[700] leading-[120%];
+    @apply text-[52px] font-[800] leading-[120%];
   }
 
   .bold-40 {
-    @apply text-[40px] font-[700] leading-[120%];
+    @apply text-[40px] font-[800] leading-[120%];
   }
 
   .bold-32 {
-    @apply text-[32px] font-[700];
+    @apply text-[32px] font-[800];
   }
 
   .bold-20 {
-    @apply text-[20px] font-[700];
+    @apply text-[20px] font-[800];
   }
 
   .bold-18 {
-    @apply text-[18px] font-[700];
+    @apply text-[18px] font-[800];
   }
 
   .bold-16 {
-    @apply text-[16px] font-[700];
+    @apply text-[16px] font-[800];
   }
 
   /* Hero */
