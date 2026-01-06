@@ -6,6 +6,7 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [bgPos, setBgPos] = useState({ x: 50, y: 50 });
   const [bgPx, setBgPx] = useState({ x: 0, y: 0 });
+  const [showCircle, setShowCircle] = useState(false);
   const logoWrapRef = useRef<HTMLDivElement | null>(null);
   const [logoMaskPx, setLogoMaskPx] = useState({ x: -9999, y: -9999 });
 
@@ -20,6 +21,9 @@ export default function Home() {
     // compute pixel position relative to hero (for the visible circle)
     setBgPx({ x: e.clientX - rect.left, y: e.clientY - rect.top });
 
+    // ensure circle is visible while moving
+    setShowCircle(true);
+
     // compute pixel position relative to the logo wrapper (for the mask)
     if (logoWrapRef.current) {
       const lw = logoWrapRef.current.getBoundingClientRect();
@@ -28,6 +32,8 @@ export default function Home() {
   };
 
   const handleHeroLeave = () => {
+    // hide the circle and clear mask when leaving the hero
+    setShowCircle(false);
     setBgPos({ x: 50, y: 50 });
     setBgPx({ x: 0, y: 0 });
     setLogoMaskPx({ x: -9999, y: -9999 });
@@ -80,11 +86,13 @@ export default function Home() {
         className="relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
         onMouseMove={handleHeroMove}
         onMouseLeave={handleHeroLeave}
+        onMouseEnter={() => setShowCircle(true)}
       >
         {/* Solid circle that follows the cursor */}
         <div
           aria-hidden
           style={{
+            display: showCircle ? "block" : "none",
             position: "absolute",
             left: `${bgPos.x}%`,
             top: `${bgPos.y}%`,
@@ -178,17 +186,17 @@ export default function Home() {
 
       {/* About Section (stacked: headline then secondary text) */}
       <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="flex flex-col gap-6 items-start">
+        <div className="flex flex-col gap-6 items-start group">
           <div>
             <h2 
-              className="font-poppins font-700 text-3xl sm:text-4xl leading-tight text-black transition-all duration-300 hover:blur-sm"
+              className="font-poppins font-700 text-3xl sm:text-4xl leading-tight text-black transition-all duration-300 blur-sm opacity-60 group-hover:blur-none group-hover:opacity-100 max-w-full md:max-w-[48ch]"
             >
               iridesceDigital blurs the boundries between creative formats
             </h2>
           </div>
 
           <div className="w-full md:w-2/3 ml-auto">
-            <p className="font-poppins font-600 text-lg text-gray-700 leading-relaxed text-right">
+            <p className="font-poppins font-600 text-lg text-gray-700 leading-relaxed text-right blur-sm opacity-60 group-hover:blur-none group-hover:opacity-100 transition-all duration-300">
               We offer Branding Strategy, Graphic Design, Web Development, Social Media Management, Content Creation, Videography, Photography
             </p>
           </div>
