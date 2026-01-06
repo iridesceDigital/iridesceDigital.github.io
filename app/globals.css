@@ -14,6 +14,16 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* A11y */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 1px, 1px);
+  white-space: nowrap; border: 0;
+}
+
 @layer utilities {
   .btn_white { 
     @apply border-white bg-white px-8 py-3 text-green-50;
@@ -212,4 +222,16 @@ nav {
   .delay-6 {
     animation-delay: 0.9s;
   }
+  /* float animations for blobs */
+  .animate-float-slow {
+    animation: float 18s ease-in-out infinite;
+  }
+  .animate-float-slower {
+    animation: float 24s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(0,-1.5%,0) scale(1.02); }
 }
