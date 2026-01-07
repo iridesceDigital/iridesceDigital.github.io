@@ -357,26 +357,24 @@ export default function Home() {
                   >
                     {/* SVG logos */}
                     {client === "HIGHst" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1183.48 626.66" preserveAspectRatio="xMidYMid meet" className="w-32 h-auto">
-                        <path d="M246.79,357.42v135.49h-77.5v-126.49c0-25.95-9.12-39.18-29.34-39.18-23.45,0-38.07,16.64-38.07,45.52v120.15H24.38V186.66h77.5v96.06c16.57-13.34,37.64-21.46,60.06-21.46,51.65,0,84.85,37.84,84.85,96.16Z" fill={isDarkMode ? "#fff" : "#000"} />
-                        <path d="M293.13,267.91h77.5v225h-77.5v-225ZM293.73,173.98h76.31v65.77h-76.31v-65.77Z" fill={isDarkMode ? "#fff" : "#000"} />
-                        <path d="M652.08,267.91v200c0,70.71-46.29,114.51-120.61,114.51-63.85,0-108.55-32.2-118.9-85.52h74.79c5.37,15.04,24.57,23.14,43.4,23.14,25.97,0,46.84-16.5,46.84-43.26v-6.72c-16.91,10.73-37,16.89-58.71,16.89-64.51,0-112.44-47.99-112.44-113.09s47.93-113.16,112.44-113.16c27.23,0,51.9,9.77,70.97,26.07l9.83-18.88h52.4ZM531.76,423.16c27.83,0,47.85-20.62,47.85-49.28s-19.96-49.04-47.85-49.04-48.03,20.62-48.03,49.04,19.96,49.28,48.03,49.28h0Z" fill={isDarkMode ? "#fff" : "#000"} />
-                      </svg>
+                      <div className={`w-32 h-16 flex items-center justify-center rounded border ${isDarkMode ? "border-white/30" : "border-black/10"}`}>
+                        <span className={`text-xs font-bold ${isDarkMode ? "text-white" : "text-black"}`}>HIGHst</span>
+                      </div>
                     )}
                     {client === "MbM" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2449.54 873.11" preserveAspectRatio="xMidYMid meet" className="w-32 h-auto">
-                        <g id="Logo">
-                          <path id="MM" d="..." fill={isDarkMode ? "#fff" : "#000"} />
-                        </g>
-                      </svg>
+                      <div className={`w-32 h-16 flex items-center justify-center rounded border ${isDarkMode ? "border-white/30" : "border-black/10"}`}>
+                        <span className={`text-xs font-bold ${isDarkMode ? "text-white" : "text-black"}`}>MbM</span>
+                      </div>
                     )}
                     {client === "Sequel" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 319.51 87.11" preserveAspectRatio="xMidYMid meet" className="w-32 h-auto">
-                        <g id="Layer_1-2">
-                          <path d="M0,53.7c0-.6.4-.9.9-.9h15.6c.5,0,.9.3.9.9.3,4.3,3.3,6.5,9.1,6.5,5.3,0,7.1-2.1,7.1-4.3,0-7.8-27.9-3.2-27.9-21.5,0-10.1,9.4-17.2,24.5-17.2s23.4,6.9,24,16.5c0,.6-.3.9-.9.9h-14.8c-.5,0-.9-.3-1-.9-.4-3.6-2.9-5.8-7.4-5.8s-6.4,1.9-6.4,4.3c0,8.1,27.7,3.5,27.7,20.6,0,10.4-9.5,18.5-25.2,18.5C9.4,71.3.3,63.6,0,53.7Z" fill={isDarkMode ? "#fff" : "#000"} />
-                          <path d="M107.7,48h-35.3v.6c0,7.6,3.4,10.9,8.6,10.9,4.6,0,7.6-2.6,9-6.4.1-.5.5-.7,1-.7h15.3c.6,0,.9.4.8,1-2.8,10.6-12.2,17.9-26.5,17.9s-25.8-8.3-25.8-23.6,11.4-30.5,30.4-30.5c17.7,0,27.3,13,23.5,30-.1.5-.5.8-1,.8ZM73.8,37.6h18c.4-5-2.2-8.8-7.7-8.8-5.2,0-8.6,3.3-10.3,8.8Z" fill={isDarkMode ? "#fff" : "#000"} />
-                        </g>
-                      </svg>
+                      <div className={`w-32 h-16 flex items-center justify-center rounded border ${isDarkMode ? "border-white/30" : "border-black/10"}`}>
+                        <span className={`text-xs font-bold ${isDarkMode ? "text-white" : "text-black"}`}>Sequel</span>
+                      </div>
+                    )}
+                    {client === "HIGHstreet" && (
+                      <div className={`w-32 h-16 flex items-center justify-center rounded border ${isDarkMode ? "border-white/30" : "border-black/10"}`}>
+                        <span className={`text-xs font-bold ${isDarkMode ? "text-white" : "text-black"}`}>HIGHstreet</span>
+                      </div>
                     )}
                   </div>
                 ))}
