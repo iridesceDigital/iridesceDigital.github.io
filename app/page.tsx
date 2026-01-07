@@ -223,14 +223,23 @@ export default function Home() {
         {/* Hero Footer Detail */}
         <div className="absolute bottom-6 left-0 right-0 flex justify-center">
           <div className="max-w-7xl w-full px-6 flex justify-between items-end">
-            <div className={`text-xs font-light ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-              {currentTime && <p>{currentTime} Leeds</p>}
+            <div 
+              className="text-xs font-light transition-colors duration-300"
+              style={{ color: isDarkMode ? "#ffffff" : "#000000", opacity: 1 }}
+            >
+              {currentTime && <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>{currentTime} Leeds</p>}
             </div>
-            <div className={`text-xs font-light ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-              <p>Est 2024</p>
+            <div 
+              className="text-xs font-light transition-colors duration-300"
+              style={{ color: isDarkMode ? "#ffffff" : "#000000", opacity: 1 }}
+            >
+              <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>Est 2024</p>
             </div>
-            <div className={`text-right text-xs font-light ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-              <p>© {new Date().getFullYear()}</p>
+            <div 
+              className="text-right text-xs font-light transition-colors duration-300"
+              style={{ color: isDarkMode ? "#ffffff" : "#000000", opacity: 1 }}
+            >
+              <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>© {new Date().getFullYear()}</p>
             </div>
           </div>
         </div>
