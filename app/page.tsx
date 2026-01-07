@@ -142,8 +142,6 @@ export default function Home() {
             background: "#B6FF00",
             borderRadius: "50%",
             pointerEvents: "none",
-            transition: "none",
-            mixBlendMode: "normal",
             zIndex: 0,
           }}
         />
@@ -154,67 +152,42 @@ export default function Home() {
             ref={logoWrapRef}
             className="mb-12 flex justify-center z-10 relative"
             // allow the wrapper to be full width so the SVG can responsively scale
-            style={{ width: "100%", height: 240 }}
+            style={{ width: "100%", height: 450 }}
           >
-            {/* Base text SVG - changes color based on theme */}
+            {/* Base logo SVG - changes color based on theme */}
             <svg
-              id="hero-text-base"
+              id="hero-logo-base"
               className={isDarkMode ? "text-white" : "text-black"}
-              style={{ color: isDarkMode ? "#fff" : "#000" }}
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1400 240"
+              viewBox="0 0 795.28 160.75"
               preserveAspectRatio="xMidYMid meet"
               className="z-10 mx-auto block max-w-none"
-              style={{ width: "min(1400px, 90vw)", height: "auto", color: isDarkMode ? "#fff" : "#000" }}
+              style={{ width: "min(1200px, 95vw)", height: "auto" }}
             >
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontFamily="Poppins-Bold, Poppins"
-                fontSize="160"
-                fontWeight={700}
-                letterSpacing="-.02em"
-                fill="currentColor"
-              >
-                iridesceDigital
-              </text>
+              <path d="M509.05,35.93c-3.26-5.79-7.9-10.29-13.94-13.51-6.04-3.22-13.08-4.83-21.11-4.83h-9.01v18.45h7.38c6.22,0,11.1,1.72,14.65,5.15,3.54,3.44,5.32,8.3,5.32,14.6s-1.77,11.03-5.32,14.43c-3.55,3.4-8.43,5.1-14.65,5.1h-7.38v-39.28h-21.27v58.05h30.28c7.96,0,14.96-1.64,21-4.94,6.04-3.29,10.71-7.83,14-13.62,3.29-5.79,4.94-12.37,4.94-19.75s-1.63-14.07-4.88-19.86Z" fill={isDarkMode ? "#fff" : "#000"} />
+              <text fontFamily="Poppins-Bold, Poppins" fontSize="110" fontWeight={700} letterSpacing="-.02em" x="4.51" y="93.77" fill={isDarkMode ? "#fff" : "#000"}>iridesce</text>
+              <text fontFamily="Poppins-Bold, Poppins" fontSize="110" fontWeight={700} letterSpacing="-.05em" x="514.89" y="94.09" fill={isDarkMode ? "#fff" : "#000"}>igital</text>
             </svg>
 
-            {/* white overlay text, masked by circle position relative to this wrapper */}
+            {/* white overlay logo, masked by circle position relative to this wrapper */}
             <div
               aria-hidden
               className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
               style={{
-                WebkitMask: `radial-gradient(circle ${CIRCLE_DIAMETER / 2}px at ${logoMaskPx.x}px ${logoMaskPx.y}px, black 99%, transparent 100%)`,
-                mask: `radial-gradient(circle ${CIRCLE_DIAMETER / 2}px at ${logoMaskPx.x}px ${logoMaskPx.y}px, black 99%, transparent 100%)`,
+                WebkitMask: `radial-gradient(circle ${CIRCLE_DIAMETER / 2}px at ${logoMaskPx.x}px ${logoMaskPx.y}px, black 100%, transparent 100%)`,
+                mask: `radial-gradient(circle ${CIRCLE_DIAMETER / 2}px at ${logoMaskPx.x}px ${logoMaskPx.y}px, black 100%, transparent 100%)`,
               }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1400 240"
+                viewBox="0 0 795.28 160.75"
                 preserveAspectRatio="xMidYMid meet"
                 className="mx-auto block max-w-none"
-                style={{ color: "#fff", width: "min(1400px, 90vw)", height: "auto" }}
+                style={{ width: "min(1200px, 95vw)", height: "auto" }}
               >
-                <text
-                  x="50%"
-                  y="50%"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontFamily="Poppins-Bold, Poppins"
-                  fontSize="160"
-                  fontWeight={700}
-                  letterSpacing="-.02em"
-                  fill="currentColor"
-                  stroke="#fff"
-                  strokeWidth={3}
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                >
-                  iridesceDigital
-                </text>
+                <path d="M509.05,35.93c-3.26-5.79-7.9-10.29-13.94-13.51-6.04-3.22-13.08-4.83-21.11-4.83h-9.01v18.45h7.38c6.22,0,11.1,1.72,14.65,5.15,3.54,3.44,5.32,8.3,5.32,14.6s-1.77,11.03-5.32,14.43c-3.55,3.4-8.43,5.1-14.65,5.1h-7.38v-39.28h-21.27v58.05h30.28c7.96,0,14.96-1.64,21-4.94,6.04-3.29,10.71-7.83,14-13.62,3.29-5.79,4.94-12.37,4.94-19.75s-1.63-14.07-4.88-19.86Z" fill="#fff" stroke="#fff" strokeWidth="1" />
+                <text fontFamily="Poppins-Bold, Poppins" fontSize="110" fontWeight={700} letterSpacing="-.02em" x="4.51" y="93.77" fill="#fff" stroke="#fff" strokeWidth="2">iridesce</text>
+                <text fontFamily="Poppins-Bold, Poppins" fontSize="110" fontWeight={700} letterSpacing="-.05em" x="514.89" y="94.09" fill="#fff" stroke="#fff" strokeWidth="2">igital</text>
               </svg>
             </div>
           </div>

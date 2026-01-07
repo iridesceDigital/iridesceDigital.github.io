@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 795.28 160.75">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-1, .cls-3 {
+        font-family: Poppins-Bold, Poppins;
+        font-size: 110px;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        letter-spacing: -.05em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path d="M509.05,35.93c-3.26-5.79-7.9-10.29-13.94-13.51-6.04-3.22-13.08-4.83-21.11-4.83h-9.01v18.45h7.38c6.22,0,11.1,1.72,14.65,5.15,3.54,3.44,5.32,8.3,5.32,14.6s-1.77,11.03-5.32,14.43c-3.55,3.4-8.43,5.1-14.65,5.1h-7.38v-39.28h-21.27v58.05h30.28c7.96,0,14.96-1.64,21-4.94,6.04-3.29,10.71-7.83,14-13.62,3.29-5.79,4.94-12.37,4.94-19.75s-1.63-14.07-4.88-19.86Z"/>
+    <text class="cls-3" transform="translate(4.51 93.77)"><tspan class="cls-2" x="0" y="0">iridesce</tspan><tspan class="cls-4" x="432.52" y="0"> </tspan></text>
+    <text class="cls-1" transform="translate(514.89 94.09)"><tspan x="0" y="0">igital</tspan></text>
+  </g>
+</svg>
