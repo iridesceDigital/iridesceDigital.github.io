@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../../components/Footer";
 
 // All available filter tags
@@ -71,6 +71,21 @@ export default function Work() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
+  // Load dark mode preference from localStorage
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode !== null) {
+      setIsDarkMode(savedDarkMode === 'true');
+    }
+  }, []);
+
+  // Save dark mode preference to localStorage
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', String(newDarkMode));
+  };
+
   // Toggle filter selection
   const toggleFilter = (tag: string) => {
     setActiveFilters((prev) =>
@@ -113,7 +128,7 @@ export default function Work() {
 
               {/* Theme Toggle Switch */}
               <button
-                onClick={() => setIsDarkMode(!isDarkMode)}
+                onClick={toggleDarkMode}
                 className={`ml-4 relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${isDarkMode ? "bg-white" : "bg-gray-300"}`}
               >
                 <span
@@ -142,7 +157,7 @@ export default function Work() {
                 <a href="/#contact" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition`}>Contact</a>
                 {/* Theme Toggle for Mobile */}
                 <button
-                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  onClick={toggleDarkMode}
                   className={`mt-2 relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${isDarkMode ? "bg-white" : "bg-gray-300"}`}
                 >
                   <span
