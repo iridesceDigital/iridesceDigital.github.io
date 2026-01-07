@@ -269,7 +269,7 @@ export default function Home() {
               className="text-xs font-light transition-colors duration-300"
               style={{ color: isDarkMode ? "#ffffff" : "#000000", opacity: 1 }}
             >
-              {currentTime && <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>{currentTime} Leeds</p>}
+              <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>53.8008° N, 1.5491° W</p>
             </div>
             <div 
               className="text-xs font-light transition-colors duration-300"
@@ -281,7 +281,7 @@ export default function Home() {
               className="text-right text-xs font-light transition-colors duration-300"
               style={{ color: isDarkMode ? "#ffffff" : "#000000", opacity: 1 }}
             >
-              <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>© {new Date().getFullYear()}</p>
+              {currentTime && <p style={{ color: isDarkMode ? "#ffffff" : "#000000" }}>{currentTime}</p>}
             </div>
           </div>
         </div>
@@ -302,7 +302,7 @@ export default function Home() {
           </div>
 
           <div className="w-full md:w-2/3 ml-auto">
-            <p className={`font-poppins font-600 text-lg ${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-right`}>
+            <p className={`font-poppins font-600 text-lg ${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-left`}>
               With over 10 years of expertise in graphic design, we've worked across diverse creative industries including music, DJ events, and brand development. Our experience spans branding strategy, web development, social media management, content creation, videography, and photography. We believe in crafting distinct and unique brand experiences that resonate with audiences and set our clients apart in crowded markets.
             </p>
           </div>
