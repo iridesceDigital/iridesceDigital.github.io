@@ -13,8 +13,77 @@ export default function Home() {
   const [currentTime, setCurrentTime] = useState<string>("");
   const logoWrapRef = useRef<HTMLDivElement | null>(null);
   const [logoMaskPx, setLogoMaskPx] = useState({ x: -9999, y: -9999 });
+  const [mobileActiveService, setMobileActiveService] = useState<string | null>(null);
+  const serviceRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const servicesSectionRef = useRef<HTMLElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isServicesSectionVisible, setIsServicesSectionVisible] = useState(false);
 
   const CIRCLE_DIAMETER = 220; // px
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // IntersectionObserver for mobile scroll-based service selection
+  useEffect(() => {
+    if (!isMobile) return;
+
+    // Observer for individual services
+    const serviceObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
+            const serviceName = entry.target.getAttribute('data-service');
+            if (serviceName) {
+              setMobileActiveService(serviceName);
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0.8,
+      }
+    );
+
+    // Observer for the entire services section
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsServicesSectionVisible(entry.isIntersecting);
+          if (!entry.isIntersecting) {
+            setMobileActiveService(null);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-10% 0px -10% 0px',
+        threshold: 0,
+      }
+    );
+
+    serviceRefs.current.forEach((element) => {
+      serviceObserver.observe(element);
+    });
+
+    if (servicesSectionRef.current) {
+      sectionObserver.observe(servicesSectionRef.current);
+    }
+
+    return () => {
+      serviceObserver.disconnect();
+      sectionObserver.disconnect();
+    };
+  }, [isMobile]);
 
   // Update time every minute
   useEffect(() => {
@@ -244,10 +313,13 @@ export default function Home() {
       <div className={`border-t transition-colors duration-300 ${isDarkMode ? "border-white border-opacity-10" : "border-black border-opacity-10"}`}></div>
 
       {/* Services Section */}
-      <section className={`max-w-7xl mx-auto px-6 py-20 transition-colors duration-300 ${isDarkMode ? "bg-black" : "bg-white"}`}>
+      <section 
+        ref={servicesSectionRef}
+        className={`max-w-7xl mx-auto px-6 py-20 transition-colors duration-300 ${isDarkMode ? "bg-black" : "bg-white"}`}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start min-h-96">
-          {/* Left Column - Image */}
-          <div className="flex items-center justify-center">
+          {/* Left Column - Image (Desktop only) */}
+          <div className="hidden md:flex items-center justify-center">
             {hoveredService && (
               <div className={`w-full h-64 md:h-80 rounded-lg overflow-hidden transition-opacity duration-300 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}>
                 <div className={`w-full h-full flex items-center justify-center text-sm ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
@@ -271,22 +343,43 @@ export default function Home() {
               "Content Creation",
               "Videography",
               "Photography"
-            ].map((service) => (
-              <button
-                key={service}
-                onMouseEnter={() => setHoveredService(service)}
-                onMouseLeave={() => setHoveredService(null)}
-                className={`text-left font-poppins font-600 text-3xl md:text-4xl transition-opacity duration-300 ${
-                  hoveredService === service 
-                    ? isDarkMode ? "text-white opacity-100" : "text-black opacity-100"
-                    : isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"
-                }`}
-              >
-                {service}
-              </button>
-            ))}
+            ].map((service) => {
+              const activeService = isMobile ? mobileActiveService : hoveredService;
+              return (
+                <div
+                  key={service}
+                  ref={(el) => {
+                    if (el) serviceRefs.current.set(service, el);
+                  }}
+                  data-service={service}
+                  onMouseEnter={() => !isMobile && setHoveredService(service)}
+                  onMouseLeave={() => !isMobile && setHoveredService(null)}
+                  className={`text-left font-poppins font-600 text-3xl md:text-4xl transition-opacity duration-300 cursor-pointer ${
+                    activeService === service 
+                      ? isDarkMode ? "text-white opacity-100" : "text-black opacity-100"
+                      : isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"
+                  }`}
+                >
+                  {service}
+                </div>
+              );
+            })}
           </div>
         </div>
+
+        {/* Mobile Fixed Overlay Image */}
+        {isMobile && mobileActiveService && isServicesSectionVisible && (
+          <div
+            className={`fixed bottom-6 right-6 z-50 w-44 h-44 rounded-lg overflow-hidden shadow-lg transition-all duration-300 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}
+          >
+            <div className={`w-full h-full flex items-center justify-center text-xs ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
+              <div className="text-center p-3">
+                <p className="font-poppins text-base font-600 leading-tight">{mobileActiveService}</p>
+                <p className="text-xs mt-1">Image</p>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       <Footer isDarkMode={isDarkMode} />
