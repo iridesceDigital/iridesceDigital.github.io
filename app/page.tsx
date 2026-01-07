@@ -1,18 +1,36 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Footer from "../components/Footer";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [hoveredService, setHoveredService] = useState<string | null>(null);
   const [bgPos, setBgPos] = useState({ x: 50, y: 50 });
   const [bgPx, setBgPx] = useState({ x: 0, y: 0 });
   const [showCircle, setShowCircle] = useState(false);
+  const [currentTime, setCurrentTime] = useState<string>("");
   const logoWrapRef = useRef<HTMLDivElement | null>(null);
   const [logoMaskPx, setLogoMaskPx] = useState({ x: -9999, y: -9999 });
 
   const CIRCLE_DIAMETER = 220; // px
+
+  // Update time every minute
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      // Convert to UK time (GMT/BST)
+      const ukTime = new Date(now.toLocaleString("en-US", { timeZone: "Europe/London" }));
+      const hours = String(ukTime.getHours()).padStart(2, "0");
+      const minutes = String(ukTime.getMinutes()).padStart(2, "0");
+      setCurrentTime(`${hours}:${minutes}`);
+    };
+    
+    updateTime();
+    const interval = setInterval(updateTime, 60000); // Update every minute
+    return () => clearInterval(interval);
+  }, []);
 
   const handleHeroMove = (e: any) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -200,8 +218,21 @@ export default function Home() {
               </svg>
             </div>
           </div>
+        </div>
 
-          
+        {/* Hero Footer Detail */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+          <div className="max-w-7xl w-full px-6 flex justify-between items-end">
+            <div className={`text-xs font-light ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+              {currentTime && <p>{currentTime} Leeds</p>}
+            </div>
+            <div className={`text-xs font-light ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+              <p>Est 2024</p>
+            </div>
+            <div className={`text-right text-xs font-light ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+              <p>© {new Date().getFullYear()}</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -223,6 +254,55 @@ export default function Home() {
             <p className={`font-poppins font-600 text-lg ${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-right`}>
               With over 10 years of expertise in graphic design, we've worked across diverse creative industries including music, DJ events, and brand development. Our experience spans branding strategy, web development, social media management, content creation, videography, and photography. We believe in crafting distinct and unique brand experiences that resonate with audiences and set our clients apart in crowded markets.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider Line */}
+      <div className={`border-t transition-colors duration-300 ${isDarkMode ? "border-white border-opacity-10" : "border-black border-opacity-10"}`}></div>
+
+      {/* Services Section */}
+      <section className={`max-w-7xl mx-auto px-6 py-20 transition-colors duration-300 ${isDarkMode ? "bg-black" : "bg-white"}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start min-h-96">
+          {/* Left Column - Image */}
+          <div className="flex items-center justify-center">
+            {hoveredService && (
+              <div className={`w-full h-64 md:h-80 rounded-lg overflow-hidden transition-opacity duration-300 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}>
+                <div className={`w-full h-full flex items-center justify-center text-sm ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
+                  {/* Placeholder for service image */}
+                  <div className="text-center">
+                    <p className="font-poppins text-lg font-600">{hoveredService}</p>
+                    <p className="text-xs mt-2">Image</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Column - Services List */}
+          <div className="flex flex-col gap-4">
+            {[
+              "Branding Strategy",
+              "Graphic Design",
+              "Web Development",
+              "Social Media Management",
+              "Content Creation",
+              "Videography",
+              "Photography"
+            ].map((service) => (
+              <button
+                key={service}
+                onMouseEnter={() => setHoveredService(service)}
+                onMouseLeave={() => setHoveredService(null)}
+                className={`text-left font-poppins font-600 text-3xl md:text-4xl transition-opacity duration-300 ${
+                  hoveredService === service 
+                    ? isDarkMode ? "text-white opacity-100" : "text-black opacity-100"
+                    : isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"
+                }`}
+              >
+                {service}
+              </button>
+            ))}
           </div>
         </div>
       </section>
