@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,9 +42,10 @@ export default function Home() {
   };
 
   return (
-    <div className={isDarkMode ? "min-h-screen bg-black pt-14" : "min-h-screen bg-white pt-14"}>
+    <div className={`${isDarkMode ? "bg-black" : "bg-white"} transition-colors duration-300`}>
+      <div className={`min-h-screen pt-14 ${isDarkMode ? "bg-black" : "bg-white"}`}>
       {/* Navigation Bar */}
-      <nav className={`fixed w-full top-0 left-0 z-40 h-14 border-b ${isDarkMode ? "border-white border-opacity-10 bg-black" : "border-black border-opacity-10 bg-white"}`}>
+      <nav className={`fixed w-full top-0 left-0 z-40 h-14 border-b transition-colors duration-300 ${isDarkMode ? "border-white border-opacity-10 bg-black" : "border-black border-opacity-10 bg-white"}`}>
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -103,7 +105,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section
-        className={`relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center px-6 py-20 overflow-hidden ${isDarkMode ? "bg-black" : "bg-white"}`}
+        className={`relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center px-6 py-20 overflow-hidden transition-colors duration-300 ${isDarkMode ? "bg-black" : "bg-white"}`}
         onMouseMove={handleHeroMove}
         onMouseLeave={handleHeroLeave}
         onMouseEnter={() => setShowCircle(true)}
@@ -204,10 +206,10 @@ export default function Home() {
       </section>
 
       {/* Divider Line */}
-      <div className={`border-t ${isDarkMode ? "border-white border-opacity-10" : "border-black border-opacity-10"}`}></div>
+      <div className={`border-t transition-colors duration-300 ${isDarkMode ? "border-white border-opacity-10" : "border-black border-opacity-10"}`}></div>
 
       {/* About Section (stacked: headline then secondary text) */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className={`max-w-7xl mx-auto px-6 py-20 transition-colors duration-300 ${isDarkMode ? "bg-black" : "bg-white"}`}>
         <div className="flex flex-col gap-6 items-start">
           <div>
             <h2 
@@ -224,6 +226,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Footer isDarkMode={isDarkMode} />
+      </div>
     </div>
   );
 }
