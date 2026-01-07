@@ -219,7 +219,7 @@ export default function Home() {
 
           <div className="w-full md:w-2/3 ml-auto">
             <p className={`font-poppins font-600 text-lg ${isDarkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-right`}>
-              We offer Branding Strategy, Graphic Design, Web Development, Social Media Management, Content Creation, Videography, Photography
+              With over 10 years of expertise in graphic design, we've worked across diverse creative industries including music, DJ events, and brand development. Our experience spans branding strategy, web development, social media management, content creation, videography, and photography. We believe in crafting distinct and unique brand experiences that resonate with audiences and set our clients apart in crowded markets.
             </p>
           </div>
         </div>
