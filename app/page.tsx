@@ -135,11 +135,11 @@ export default function Home() {
       <nav className={`fixed w-full top-0 left-0 z-40 h-14 border-b transition-colors duration-300 ${isDarkMode ? "border-white border-opacity-10 bg-black" : "border-black border-opacity-10 bg-white"}`}>
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <a href="/" className="flex-shrink-0">
             <svg id="iD" width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.89 841.89">
               <path d="M651.1,269.3c-24.79-44.07-60.2-78.36-106.19-102.88-46.01-24.51-99.58-36.78-160.73-36.78h-68.59v140.49h56.2c47.37,0,84.56,13.09,111.56,39.25,26.99,26.17,40.49,63.22,40.49,111.15s-13.51,84.02-40.49,109.91c-27,25.9-64.19,38.84-111.56,38.84h-56.2v-299.15h-161.97v442.12h230.56c60.6,0,113.9-12.52,159.91-37.6,45.99-25.06,81.53-59.63,106.6-103.71,25.06-44.07,37.6-94.21,37.6-150.4s-12.4-107.15-37.19-151.23Z" fill={isDarkMode ? "white" : "black"} />
             </svg>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-10 items-center">
@@ -219,9 +219,9 @@ export default function Home() {
           {/* Logo Large (wrapper so overlay can align exactly) */}
           <div
             ref={logoWrapRef}
-            className="mb-12 flex justify-center z-10 relative"
+            className="mb-12 flex justify-center z-10 relative select-none"
             // allow the wrapper to be full width so the SVG can responsively scale
-            style={{ width: "100%", height: 450 }}
+            style={{ width: "100%", height: 450, userSelect: "none", WebkitUserSelect: "none" }}
           >
             {/* Base logo SVG - changes color based on theme */}
             <svg
