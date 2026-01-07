@@ -143,7 +143,7 @@ export default function Home() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-10 items-center">
-            <a href="#work" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition duration-300`}>Work</a>
+            <a href="/work" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition duration-300`}>Work</a>
             <a href="#about" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition duration-300`}>About</a>
             <a href="#contact" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition duration-300`}>Contact</a>
 
@@ -173,7 +173,7 @@ export default function Home() {
         {isMenuOpen && (
           <div className={`md:hidden ${isDarkMode ? "border-t border-white border-opacity-10" : "border-t border-black border-opacity-10"}`}>
             <div className="px-6 py-4 flex flex-col gap-4">
-              <a href="#work" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition`}>Work</a>
+              <a href="/work" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition`}>Work</a>
               <a href="#about" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition`}>About</a>
               <a href="#contact" className={`font-poppins text-sm font-600 ${isDarkMode ? "text-white" : "text-black"} hover:opacity-60 transition`}>Contact</a>
               {/* Theme Toggle for Mobile */}
@@ -226,7 +226,6 @@ export default function Home() {
             {/* Base logo SVG - changes color based on theme */}
             <svg
               id="hero-logo-base"
-              className={isDarkMode ? "text-white" : "text-black"}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 795.28 160.75"
               preserveAspectRatio="xMidYMid meet"
